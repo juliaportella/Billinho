@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .pagina{
+    width: 560px;
+    padding: 50px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: #edf2ff;
+    margin-left: 600px;
+    margin-top: 50px;
+  }
+
+  .ver-dados-aluno a{
+    background-color: orange;
+    padding: 6px 9px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .botoes a{
+    display: flex;
+    background-color: #304ffe;
+    color: white;
+    text-decoration: none;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: none;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
+  
+  .botao-1{
+    margin-right: 425px;
+  }
+
+  .botao-2{
+    margin-right: 360px;
+  }
+
+  </style>
+
+<body class="pagina">
+<p style="color: green"><%= notice %></p>
+
+<h1>Matriculas cadastradas</h1>
+
+<div id="enrollments">
+  <% @enrollments.each do |enrollment| %>
+    <%= render enrollment %>
+    <p class="ver-dados-aluno">
+    <%= link_to "Ver dados da matricula", enrollment %>
+    </p>
+  <% end %>
+</div>
+<div class="botoes">
+    <div class="botao-1">
+    <%= link_to "Nova matricula", new_enrollment_path %>
+    </div>
+
+    <div class="botao-2">
+    <%= link_to "Voltar para pagina inicial", root_path %>
+    </div>
+</div>

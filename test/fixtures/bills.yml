@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: 9.99
+  due_date: 2023-06-16
+  enrollment: one
+  status: MyString
+
+two:
+  value: 9.99
+  due_date: 2023-06-16
+  enrollment: two
+  status: MyString

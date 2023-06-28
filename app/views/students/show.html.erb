@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .pagina{
+    width: 970px;
+    padding: 50px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: #edf2ff;
+    margin-left: 390px;
+    margin-top: 50px;
+    font-size: 19px;
+  }
+
+  .info{
+    font-size: 30px;
+    text-aling: center;
+    padding-left: 110px;
+  }
+
+  .botao-1{
+    margin-right: 855px;
+  }
+
+  .botao-2{
+    margin-right: 815px;
+  }
+
+  .botoes a{
+    display: flex;
+    background-color: #304ffe;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: none;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
+
+  .espaco-vertical {
+    margin-bottom: 20px;
+  }
+
+  .botao-apagar {
+    display: flex;
+    background-color: orange;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: none;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
+  </style>
+  
+<body class="pagina">
+<p style="color: green"><%= notice %></p>
+
+<b><p class="info">Informações</p></b>
+<%= render @student %>
+
+<div class="botoes">
+  <div class="botao-1">
+    <%= link_to "Editar dados", edit_student_path(@student) %> 
+  </div>
+
+  <%= button_to "Apagar aluno", @student, method: :delete, class: "botao-apagar"  %>
+
+  <div class="botao-2 espaco-vertical">
+  <%= link_to "Ver lista de alunos", students_path %>
+  </div>
+</div>

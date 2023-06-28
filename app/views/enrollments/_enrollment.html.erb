@@ -1,0 +1,44 @@
+<div id="<%= dom_id enrollment %>">
+
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  th {
+    background-color: #ffffff;
+  }
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  tr:hover {
+    background-color: #e2e2e2;
+  }
+</style>
+<table>
+  <tr>
+    <th>Institution</th>
+    <th>Student</th>
+    <th>Course</th>
+    <th>Quantity bills</th>
+    <th>Due day</th>
+    <th>Course value</th>
+  </tr>
+
+  <tr>
+    <td><%= enrollment.institution_id %></td>
+    <td><%= enrollment.student_id %></td>
+    <td><%= enrollment.course %></td>
+    <td><%= enrollment.quantity_bills %></td>
+    <td><%= enrollment.due_day %></td>
+    <td><%= number_to_currency(enrollment.course_value, unit: 'R$') %></td>
+  </tr>
+  </table>
+</div>

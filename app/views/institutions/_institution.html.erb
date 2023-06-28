@@ -1,0 +1,36 @@
+<div id="<%= dom_id institution %>">
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  tr:hover {
+    background-color: #e2e2e2;
+  }
+</style>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Cnpj</th>
+    <th>Modality</th>
+  </tr>
+  <tr>
+    <td><%= institution.name %></td>
+    <td><%= institution.cnpj %></td>
+    <td><%= institution.modality %></td>
+  </tr>
+</table>
+</div>
