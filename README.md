@@ -1,24 +1,19 @@
-# README
+# Sistema de Cadastro de Instituições, Alunos, Matrículas e Geração de Mensalidades
+## Parâmetros:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- `institution_id`: (int) ID da instituição;
+- `student_id`: (int) ID da do estudante;
+- `enrollment_id`: (int) ID da matricula;
 
-Things you may want to cover:
+## Comportamento:
 
-* Ruby version
+ - Faz a validação dos argumentos passados
+ - Cria mensalidades para o aluno que tenha matricula
+ - Valida e Calcula as datas de vencimento das mensalidades
 
-* System dependencies
+## Modo de usar:
 
-* Configuration
+```Ruby
+Bill.create!(value: value_each_bill, due_date: due_date, status: 'Open', enrollment_id: id) 
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
