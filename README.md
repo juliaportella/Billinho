@@ -1,9 +1,10 @@
 # Sistema de Cadastro de Instituições, Alunos, Matrículas e Geração de Mensalidades
 ## Parâmetros:
 
-- `institution_id`: (int) ID da instituição;
-- `student_id`: (int) ID da do estudante;
+- `value_each_bill`:(float) valor de cada mensalidade
+- `due_date`: (string) data de vencimento;
 - `enrollment_id`: (int) ID da matricula;
+- `status`: (string) status da mensalidade ('Open', 'Delayed', 'Paid')
 
 ## Comportamento:
 
@@ -14,6 +15,6 @@
 ## Modo de usar:
 
 ```Ruby
-Bill.create!(value: value_each_bill, due_date: due_date, status: 'Open', enrollment_id: id) 
+Bill.create!(value: value_each_bill, due_date: due_date, status: status, enrollment_id: id) 
 ```
 
