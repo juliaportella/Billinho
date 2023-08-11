@@ -5,5 +5,5 @@ class Bill < ApplicationRecord
 
   validates :value, :due_date, :status, presence: true
   validates :value, numericality: { greater_than: 0 }
-  validates :status, inclusion: { in: ['Open', 'Delayed', 'Paid'] }
+  validates :status, inclusion: { in: %w[Open Delayed Paid] }
 end
