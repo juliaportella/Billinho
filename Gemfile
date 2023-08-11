@@ -75,3 +75,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem 'devise', '~> 4.9.2'
+gem 'rubocop-rails', '~> 2.20.2'
