@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_16_140213) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_24_195543) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bills", force: :cascade do |t|
-    t.decimal "value"
+    t.decimal "value", precision: 10, scale: 2
     t.date "due_date"
     t.bigint "enrollment_id", null: false
     t.string "status"
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_140213) do
     t.decimal "course_value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
     t.index ["institution_id"], name: "index_enrollments_on_institution_id"
     t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
@@ -43,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_140213) do
     t.string "modality"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
   end
 
   create_table "students", force: :cascade do |t|
@@ -54,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_140213) do
     t.string "payment_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
   end
 
   add_foreign_key "bills", "enrollments"

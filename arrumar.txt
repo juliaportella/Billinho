@@ -1,0 +1,42 @@
+BILLS
+OK - arrumar colunas em exibição
+OK - Arrumar a config do valor das bills
+OK- Arrumar config data de vencimento pasa dd/mm/aaaa
+- Arrumar o id da enrollment de referencia (errado:Enrollment #25)
+OK- Retirar o Updated at
+OK - Remover o olhinho
+OK - Remover o "X" da tabela
+OK - Adicionar opção de seleção de status
+- inserir opção de que se o due_date passar do current day, o status vai ficar como "atrasado"
+
+enrollment
+OK - arrumar colunas em exibição
+- Colocar o num de Quantity bills no meio da coluna e do due day também
+OK - Remover o Updated at
+OK - Remover a coluna de Bills
+OK - Remover o olhinho
+- Remover botão "adicionar novo institution" e "adicionar novo student"
+OK - Tirar a opção de valor negativo do course value, nao tirou mas coloquei uma validação
+OK - remover opção de vincular outras bulls a nova matricula
+OK - Remover o "X" da tabela
+
+Institutions
+OK - arrumar colunas em exibição
+OK - na coluna Enrollments, colocar apenas o numero de matriculas associadas a essa ies
+OK - na aba de modalidade, adicionar a opção "select", para iserir as opções de ies, creche ou escola
+- remover botao de "adicionar novo enrollment"
+- remover opção de vincular matriculas existentes a essa ies
+OK - Remover o olhinho
+OK - Remover o "X" da tabela
+OK - Adicionar opção de seleção de modalidade
+
+
+Students
+OK - arrumar colunas em exibição
+- arrumar config de cpf
+OK - Arrumar data de nascimento para dd/mm/aaaa
+OK - Remover o Updated at
+OK - Remover o olhinho
+OK - Remover o "X" da tabela
+- no botao "i" na linha de Enrollments, mostrar uma lista das matriculas sem o sublinhado 
+

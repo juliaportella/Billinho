@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'home#index'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  root to: redirect('/admin')
   resources :bills
   resources :enrollments
   resources :students
