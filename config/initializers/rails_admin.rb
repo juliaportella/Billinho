@@ -1,3 +1,33 @@
+def format_date_field(field_name, format)
+  field field_name do
+    strftime_format format
+  end
+end
+
+def format_currency_field(field_name)
+  field field_name do
+    formatted_value do
+      "R$ #{value.to_s.gsub('.', ',')}"
+    end
+  end
+end
+
+def configure_enum_field(field_name, values)
+  field field_name, :enum do
+    enum do
+      values
+    end
+  end
+end
+
+def configure_integer_field(field_name, min, max)
+  field field_name, :integer do
+    html_attributes do
+      { min: min, max: max }
+    end
+  end
+end
+
 RailsAdmin.config do |config|
   config.asset_source = :sprockets
 
@@ -16,39 +46,27 @@ RailsAdmin.config do |config|
   config.model 'Bill' do
     list do
       exclude_fields :updated_at
-      format_created_at_field
-      format_due_date
-      field :value do
-        formatted_value do
-          "R$ #{value.to_s.gsub('.', ',')}"
-        end
-      end
+      format_date_field :created_at, "%d/%m/%Y"
+      format_currency_field :value
       field :enrollment do
         pretty_value do
           bindings[:object].word_enrollment_translation
         end
       end
     end
+
     edit do
       include_all_fields
-      format_due_date
-      field :status, :enum do
-        enum do
-          [['Open'], ['Overdue'], ['Paid']]
-        end
-      end
-      field :value, :integer do
-        html_attributes do
-          { min: 1, max: 10000 }
-        end
-      end
+      format_date_field :due_date, "%d/%m/%Y"
+      configure_enum_field :status, [['Open'], ['Overdue'], ['Paid']]
+      configure_integer_field :value, 1, 10000
     end
   end
 
   config.model 'Enrollment' do
     list do
       exclude_fields :updated_at, :bills
-      format_created_at_field
+      format_date_field :created_at, "%d/%m/%Y"
       field :student do
         pretty_value do
           bindings[:object].student.name
@@ -59,58 +77,34 @@ RailsAdmin.config do |config|
           bindings[:object].institution.name
         end
       end
-      field :course_value do
-        formatted_value do
-          "R$ #{value.to_s.gsub('.', ',')}"
-        end
-      end
+      format_currency_field :course_value
     end
 
     edit do
       include_all_fields
       exclude_fields :bills
-      field :status, :enum do
-        enum do
-          [['Active'], ['Canceled'], ['Locked']]
-        end
-      end
-      field :course_value, :integer do
-        html_attributes do
-          { min: 1, max: 100000 }
-        end
-      end
-      field :quantity_bills, :integer do
-        html_attributes do
-          { min: 1, max: 100 }
-        end
-      end
-      field :due_day, :integer do
-        html_attributes do
-          { min: 1, max: 31 }
-        end
-      end
+      configure_enum_field :status, [['Active'], ['Canceled'], ['Locked']]
+      configure_integer_field :course_value, 1, 100000
+      configure_integer_field :quantity_bills, 1, 100
+      configure_integer_field :due_day, 1, 31
     end
   end
 
   config.model 'Institution' do
     list do
       exclude_fields :updated_at
-      format_created_at_field
-      count_enrollments
+      format_date_field :created_at, "%d/%m/%Y"
+      field :enrollments do
+        pretty_value do
+          bindings[:object].enrollments.count
+        end
+      end
     end
 
     edit do
       exclude_fields :enrollments
-      field :modality, :enum do
-        enum do
-          [['University'], ['School'], ['Kindergarten']]
-        end
-      end
-      field :status, :enum do
-        enum do
-          [['Active'], ['Inactive']]
-        end
-      end
+      configure_enum_field :modality, [['University'], ['School'], ['Kindergarten']]
+      configure_enum_field :status, [['Active'], ['Inactive']]
     end
   end
 
@@ -118,44 +112,18 @@ RailsAdmin.config do |config|
     list do
       include_all_fields
       exclude_fields :updated_at, :status
-      count_enrollments
-      format_birthdate_field
-      format_created_at_field
+      field :enrollments do
+        pretty_value do
+          bindings[:object].enrollments.count
+        end
+      end
+      format_date_field :birthdate, "%d/%m/%Y"
+      format_date_field :created_at, "%d/%m/%Y"
     end
 
     edit do
       exclude_fields :enrollments, :status
-      field :payment_method, :enum do
-        enum do
-          [['Boleto'], ['Cartão']]
-        end
+      configure_enum_field :payment_method, [['Boleto'], ['Cartão']]
     end
   end
-end
-
-def format_created_at_field
-  field :created_at do
-    strftime_format "%d/%m/%Y"
-  end
-end
-
-def format_birthdate_field
-  field :birthdate do
-    strftime_format "%d/%m/%Y"
-  end
-end
-
-def format_due_date
-  field :due_date do
-    strftime_format "%d/%m/%Y"
-  end
-end
-
-def count_enrollments
-  field :enrollments do
-    pretty_value do
-      bindings[:object].enrollments.count
-    end
-  end
-end
 end
