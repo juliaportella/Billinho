@@ -27,7 +27,7 @@ class Enrollment < ApplicationRecord
         due_date: due_date,
         status: 'Open',
         enrollment_id: id
-        )
+      )
 
       index += 1
     end
@@ -50,6 +50,6 @@ class Enrollment < ApplicationRecord
     raise 'A quantidade de parcelas deve ser superior a 0' unless quantity_bills.positive?
     raise 'O dia de vencimento deve ser entre 1 e 31' unless due_day.between?(1, 31)
     raise 'As informações do curso, número de mensalidades, dia de vencimento e valor do curso devem existir' if course.blank? || quantity_bills.blank? || due_day.blank? || course_value.blank?
-    end
+  end
 end
 
